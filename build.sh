@@ -1,12 +1,12 @@
 #!/bin/bash
 
 BUSYBOX=busybox-1.21.1
-TOR=tor-0.2.4.22
+TOR=tor-0.2.4.23
 NTPD=openntpd-3.9p1
 OPENSSH=openssh-6.6p1
 HAVEGED=haveged-1.9.1
 
-KVERSION=3.14.4
+KVERSION=3.15.6
 LINUX=linux-${KVERSION}
 PATCHES=hardened-patches-${KVERSION}-1.extras
 
@@ -393,10 +393,10 @@ EOF
 
 	if [[ "x$DEBUG" = "xyes" ]] ; then
 		mv tor.iso tor.uclibc.$TARGET.debug.$RELEASE.iso
-		md5sum tor.uclibc.$TARGET.debug.$RELEASE.iso > tor.uclibc.$TARGET.debug.$RELEASE.iso.md5
+		sha256sum tor.uclibc.$TARGET.debug.$RELEASE.iso > tor.uclibc.$TARGET.debug.$RELEASE.iso.sha256
 	else
 		mv tor.iso tor.uclibc.$TARGET.$RELEASE.iso
-		md5sum tor.uclibc.$TARGET.$RELEASE.iso > tor.uclibc.$TARGET.$RELEASE.iso.md5
+		sha256sum tor.uclibc.$TARGET.$RELEASE.iso > tor.uclibc.$TARGET.$RELEASE.iso.sha256
 	fi
 }
 
