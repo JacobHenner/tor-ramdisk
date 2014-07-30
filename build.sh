@@ -22,8 +22,12 @@ set_start()
 
 set_target()
 {
-	[[ "x$TARGET" = "x" ]] && TARGET="x86"
-	[[ "x$TARGET" != "xx86" && "x$TARGET" != "xx86_64" ]] && echo "Unknown ARCH" && exit
+	MYARCH=$(uname -m)
+	case $MYARCH in
+		x86_64) TARGET="x86_64" ;;
+		*86)    TARGET="x86"    ;;
+		*)      echo "Unknown ARCH" && exit ;;
+	esac
 }
 
 ################################################################################
